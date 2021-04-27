@@ -1,3 +1,4 @@
+{-# LANGUAGE ViewPatterns #-}
 module Data.Typelevel.Passage where
 
 import Data.Kind (Constraint, Type)
@@ -16,6 +17,17 @@ import Prelude
 -- | An nethereal passage
 type Passage :: (k -> Constraint) -> Type -> Type
 newtype Passage c x' = Passage {recite :: forall x. c x => Proxy x -> x'}
+  deriving Functor
+
+instance Applicative (Passage c)
+  where
+  pure a = Passage $ pure a
+  Passage ff <*> Passage fa = Passage $ ff <*> fa
+
+instance Monad (Passage c)
+  where
+  return = pure
+  Passage ma >>= amb = Passage $ ma >>= (recite . amb)
 
 passage :: forall c x'. (forall x. c x => Proxy x -> x') -> Passage c x'
 passage = Passage
