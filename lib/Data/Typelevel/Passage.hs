@@ -34,7 +34,9 @@ type Embodiment k = Some (TypeRep @k)
 embody :: Passage (Typeable @k) (Embodiment k)
 embody = passage $ \(Proxy :: Proxy a) -> Some $ typeRep @a
 
--- | Generic machinery for rotely demoting things (note the kind; this is a fold!)
+-- | Some passages are recited over and over across many parts of a structure. We can use
+--   an instance of @Rote@ to lift spells for summoning lesser entities to spells for summoning
+--   a structured aggregate.
 type Rote :: forall f k. (k -> Constraint) -> f k -> Constraint
 class Rote c (v :: f k) where
   rote' ::
