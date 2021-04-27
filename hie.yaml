@@ -1,0 +1,7 @@
+cradle:
+  cabal:
+  - path: "./lib"
+    component: "lib:grimoire"
+
+  - path: "./test"
+    component: "grimoire:test:grimoire-spec"
