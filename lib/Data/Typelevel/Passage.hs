@@ -47,6 +47,7 @@ class Rote c (v :: f k) where
     -- | The earthly result
     f x
 
+-- | Recite a passage by rote for each part of a composite structure
 rote :: forall f c x. Passage c x -> Passage (Rote @f c) (f x)
 rote p = Passage $ rote' p
 
@@ -63,6 +64,7 @@ class Birote c1 c2 (v :: f k1 k2) where
     -- | The earthly result
     f x y
 
+-- | Given two passages, recite the appropriate one for each part of a composite structure
 birote :: forall f c1 c2 x y. Passage c1 x -> Passage c2 y -> Passage (Birote @f c1 c2) (f x y)
 birote p1 p2 = Passage $ birote' p1 p2
 
