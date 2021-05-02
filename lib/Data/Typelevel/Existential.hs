@@ -2,7 +2,7 @@
 {-# LANGUAGE ViewPatterns #-}
 {-# LANGUAGE AllowAmbiguousTypes #-}
 
-module Data.Typelevel.Exists where
+module Data.Typelevel.Existential where
 
 import Data.Functor.Product (Product (Pair))
 import Data.Kind (Constraint, Type)

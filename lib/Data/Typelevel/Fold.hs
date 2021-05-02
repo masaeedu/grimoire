@@ -1,9 +1,9 @@
 {-# LANGUAGE ViewPatterns #-}
-module Data.Typelevel.Passage where
+module Data.Typelevel.Fold where
 
 import Data.Kind (Constraint, Type)
 import Data.Proxy (Proxy (..))
-import Data.Typelevel.Exists (Dict (..), Some (..))
+import Data.Typelevel.Existential (Dict (..), Some (..))
 import GHC.TypeLits (KnownSymbol, symbolVal)
 import Type.Reflection (TypeRep, Typeable, typeRep)
 import Prelude

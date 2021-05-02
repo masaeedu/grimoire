@@ -2,7 +2,7 @@
 {-# LANGUAGE UndecidableInstances #-}
 {-# LANGUAGE UndecidableSuperClasses #-}
 {-# LANGUAGE PartialTypeSignatures #-}
-module Data.Typelevel.CFunction where
+module Data.Typelevel.Function where
 
 import Prelude hiding (not)
 import Data.Kind
