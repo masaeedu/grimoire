@@ -29,9 +29,13 @@ data Dream c
 (^$) :: c x y => Dream (c :: a ⇒ b) -> Proxy x -> Proxy y
 (^$) Dream Proxy = Proxy
 
+infixr 0 ^$
+
 -- Composition
 type (∘) :: (b ⇒ c) -> (a ⇒ b) -> a ⇒ c
 class (f ∘ g) a b | f g a -> b
+
+infixr 9 ∘
 
 instance (CCase f x b, CCase g a x) => (f ∘ g) a b
 
