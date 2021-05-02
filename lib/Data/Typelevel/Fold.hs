@@ -14,7 +14,7 @@ import Prelude
 
 -- For now, the bridge only goes in one direction. Perhaps this is for the best.
 
--- | An nethereal passage
+-- | A passage through which to retrieve and embody nethereal entities
 type Passage :: (k -> Constraint) -> Type -> Type
 newtype Passage c x' = Passage {recite :: forall x. c x => Proxy x -> x'}
   deriving Functor
