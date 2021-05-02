@@ -49,6 +49,7 @@ instance (f ∘ g) a b => CCase (f ∘ g) a b
 instance CFunction (f ∘ g)
 
 -- A nethereal journey from point A to point B
+type Dream :: a → b
 data Dream a b
   where
   Dream :: (c ^@ a := b) => Proxy c -> Dream a b
