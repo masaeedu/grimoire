@@ -9,6 +9,7 @@ import Prelude hiding (not, id, (.))
 import Data.Kind
 import Data.Proxy
 import Control.Category
+import GHC.TypeLits
 
 -- A nethereal profunctor enriched in the category of types and relations
 type a ⇒ b = a -> b -> Constraint
@@ -62,7 +63,7 @@ instance Category Dream
   id = dream @CId
   Dream (_ :: Proxy f) . Dream (_ :: Proxy g) = Dream $ Proxy @(f ∘ g)
 
--- Test
+-- Test 1
 type Not :: Bool ⇒ Bool
 instance Not 'False 'True
 instance Not 'True 'False
@@ -72,8 +73,20 @@ class Not a b | a -> b
 instance Not a b => CCase Not a b
 instance CFunction Not
 
-test1 :: Dream 'False _ -- GHC says "Found wildcard standing for 'True :: Bool"
-test1 = dream @Not
+test1_1 :: Dream 'False _ -- = 'True :: Bool
+test1_1 = dream @Not
 
-test2 :: Dream 'False _ -- GHC says "Found wildcard standing for 'False :: Bool"
-test2 = dream @Not . dream @Not
+test1_2 :: Dream 'False _ -- = 'False :: Bool
+test1_2 = dream @Not . dream @Not
+
+-- Test 2
+type Append :: (Symbol, Symbol) ⇒ Symbol
+instance AppendSymbol a b ~ c => Append '(a, b) c
+
+-- etc. etc.
+class Append s1s2 r | s1s2 -> r
+instance Append s1s2 r => CCase Append s1s2 r
+instance CFunction Append
+
+test2_1 :: Dream '("hello, ", "world") _ -- = "hello, world" :: Symbol
+test2_1 = dream @Append
