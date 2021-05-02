@@ -15,7 +15,7 @@ type a ⇒ b = a -> b -> Constraint
 type CCase :: a ⇒ b -> a ⇒ b
 class (CFunction c, c a b) => CCase c a b | c a -> b
 
--- A functional relation (i.e. one for which the domain value uniquely determines the result over the entire domain)
+-- A functional relation (i.e. one for which the domain value uniquely determines the result, over the entire domain)
 type CFunction :: (a ⇒ b) -> Constraint
 class (forall x y. c x y => CCase c x y) => CFunction c
 
