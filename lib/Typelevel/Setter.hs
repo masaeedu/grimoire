@@ -1,6 +1,6 @@
-module Data.Typelevel.Setter where
+module Typelevel.Setter where
 
-import Data.Typelevel.Function
+import Typelevel.Function
 
 type Setter s t a b = (a ⇒ b) -> s ⇒ t
 

@@ -3,7 +3,7 @@
 {-# LANGUAGE UndecidableSuperClasses #-}
 {-# LANGUAGE PartialTypeSignatures #-}
 {-# LANGUAGE AllowAmbiguousTypes #-}
-module Data.Typelevel.Function where
+module Typelevel.Function where
 
 import Prelude hiding (not, id, (.))
 import Data.Kind
