@@ -1,8 +1,8 @@
 module Main where
 
 import Data.Proxy (Proxy (..))
-import Data.Typelevel.Exists (someTypeRep)
-import Data.Typelevel.Passage
+import Data.Typelevel.Existential (someTypeRep)
+import Data.Typelevel.Fold
   ( Passage (recite),
     birote,
     embody,
