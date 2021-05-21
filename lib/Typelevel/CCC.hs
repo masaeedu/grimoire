@@ -11,14 +11,12 @@ type c ⇒ d = c => d
 infixr 0 ⇒
 
 -- Product
-type (/\) :: Constraint -> Constraint -> Constraint
 class (a, b)
   => a /\ b
 instance (a, b) => a /\ b
 infixr 6 /\
 
 -- Unit
-type (⊤) :: Constraint
 class ()
   => (⊤)
 instance (⊤)
@@ -46,6 +44,20 @@ instance Associator1 x y z
 class x /\ y /\ z ⇒ (x /\ y) /\ z
   => Associator2 x y z
 instance Associator2 x y z
+
+-- Product projections
+class (a /\ b) ⇒ a
+  => Fst a b
+instance Fst a b
+
+class (a /\ b) ⇒ b
+  => Snd a b
+instance Snd a b
+
+-- Product universal property
+class (x ⇒ a) /\ (x ⇒ b) ⇒ x ⇒ (a /\ b)
+  => Build x a b
+instance Build x a b
 
 -- Product left unitor
 class x ⇒ (⊤) /\ x
