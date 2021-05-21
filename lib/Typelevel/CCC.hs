@@ -7,16 +7,18 @@ import Data.Kind (Constraint)
 
 -- Hom
 type (⇒) :: Constraint -> Constraint -> Constraint
-type c ⇒ d = (c => d)
+type c ⇒ d = c => d
 infixr 0 ⇒
 
 -- Product
+type (/\) :: Constraint -> Constraint -> Constraint
 class (a, b)
   => a /\ b
 instance (a, b) => a /\ b
 infixr 6 /\
 
 -- Unit
+type (⊤) :: Constraint
 class ()
   => (⊤)
 instance (⊤)
