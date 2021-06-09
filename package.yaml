@@ -1,5 +1,6 @@
 spec-version: 0.30.0
 name: grimoire
+version:  0.0.1
 author: Asad Saeeduddin
 maintainer: masaeedu@gmail.com
 license: MIT
